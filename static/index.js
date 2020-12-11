@@ -1,12 +1,15 @@
 
 function add_document_form(){
+    // Функция которая открывает меню поиска документов
     document.getElementById('main').innerHTML = document.getElementById('document_form_div').innerHTML;
 }
 function add_man_form(){
+    // Функция которая открывает меню поиска людей
     document.getElementById('main').innerHTML = document.getElementById('man_form_div').innerHTML;
 }
 
 function add_additional_settings(){
+    // Функция которая открывает или закрывает меню доп настроек поиска людей
     if(document.getElementById('additional_hidden').className == "d-none"){
         document.getElementById('additional_hidden').className = ""
     }
@@ -25,14 +28,6 @@ function send_request_man(){
     if(chin!=""){
         values.chin = chin
     }
-    year = document.getElementById('year_input').value
-    if(year!=""){
-        values.year = year
-    }
-    number = document.getElementById('number_input').value
-    if(number!=""){
-        values.number = number
-    }
     rubric = document.getElementById('rubric_input').value
     if(rubric!=""){
         values.rubric = rubric
@@ -45,7 +40,10 @@ function send_request_man(){
             data: values,
             method: 'post',
             success: function(response){
+                response = JSON.parse("[" + response + "]");
                 console.log(response)
+                document.getElementById('finded_thing').innerHTML = `<a href='${SCRIPT_ROOT}/people_info/${response[0][0]}'>${response[0][1]}</a>`
+                document.getElementById('finded_thing').className = ""
             },
             error: function(error){
                 console.log(error)

@@ -29,6 +29,11 @@
                     <button class="btn btn-outline-danger btn-block" onclick="add_man_form()">Личность</button>
                 </div>
             </div>
+            <div class="d-none" id='finded_thing'>
+                <div class="row pt-4 justify-content-center">
+
+                </div>
+            </div>
             <div class="d-none" id='document_form_div'>
                 <div class="row pt-4 justify-content-center">
                     <div class="col-sm-6 col-md-6">
@@ -47,6 +52,7 @@
                             </datalist>
                         </form>
                     </div>
+                    <div class="col-md-2"></div>
                     <div class="col-sm-6 col-md-2 sm-pt-2">
                         <button type="button" class="btn btn-outline-danger  btn-block" onclick="send_request_document()">Поиск</button>
                     </div>
@@ -54,7 +60,7 @@
             </div>
             <div class="d-none" id="man_form_div">
                 <div class="row pt-4 justify-content-center">
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <input type="text" list="names_choices" class="form-control" id="names_input" name="names_input"
                             placeholder="Имя человека">
                         <datalist id="names_choices">
