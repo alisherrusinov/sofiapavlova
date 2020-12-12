@@ -55,6 +55,7 @@ def get_file(file_name):
         return 404
 
 
+
 @app.route('/get_people', methods=['POST'])
 def get_people():
     """Обработчик ajax запроса по поиску людей по критериям"""
@@ -116,7 +117,32 @@ def man_detail(id):
 @app.route('/')
 def hello_world():
     """Функция обработчик запроса в корень сайта"""
-    return render_template('index.html')
+    all_people = ManModel.query.all()
+    all_chins = []
+    all_rubrics = []
+    all_names = []
+    for i in all_people:
+        all_chins.append(i.chin)
+        all_rubrics.append(i.rubric)
+        all_names.append(i.name)
+    return render_template('index.html', all_names=all_names, all_chins=all_chins, all_rubrics=all_rubrics)
+
+@app.route('/publications')
+def all_publications():
+    """Функция обработчик запроса в корень сайта"""
+    all_files = FileModel.query.all()
+    return render_template('all_files.html', all_files=all_files)
+
+
+@app.route('/about')
+def about():
+    """Функция обработчик запроса в корень сайта"""
+    return render_template('about.html')
+
+@app.route('/help')
+def help_():
+    """Функция обработчик запроса в корень сайта"""
+    return render_template('help.html')
 
 
 if __name__ == '__main__':

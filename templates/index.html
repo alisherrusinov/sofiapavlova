@@ -24,13 +24,16 @@
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item active">
-					<a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+					<a class="nav-link" href="/publications">Публикации <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="#">О сайте <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="/about">О сайте <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item active">
-					<a class="nav-link" href="#">FAQ <span class="sr-only">(current)</span></a>
+					<a class="nav-link" href="/help">FAQ <span class="sr-only">(current)</span></a>
 				</li>
 			</ul>
 		</div>
@@ -46,7 +49,7 @@
             <div class="row pt-2">
                 <h4>О ресурсе</h4>
                 <p>Электронный ресурс посвящен публикации 16 рукописных боярских списков 1700-1721 гг., которые составлялись служащими Разрядного приказа и Правительствующего Сената для чиновного учета более 11 тыс.
-                обладателей думных, высших дворцовых, московских чинов ("царедворцев") и приказных дьяков. <a href="about/">Подробнее</a>
+                обладателей думных, высших дворцовых, московских чинов ("царедворцев") и приказных дьяков. <a href="/about">Подробнее</a>
                 </p>
             </div>
         </div>
@@ -54,21 +57,9 @@
 			<div class="col-sm-6 col-md-8 col-xl" style="padding-bottom:5em;">
                 <!-- блок контент -->
                 <div class="row justify-content-center">
-                    <h3>Что нужно найти?</h3>
+                    <h3>Введите информацию о человеке</h3>
                 </div>
                 <div class="" id='main'>
-                </div>
-                <div class="row pt-4 justify-content-center">
-                    <div class="col-md-4">
-                        <button class="btn btn-outline-danger btn-block" onclick="add_document_form()">Документ</button>
-                    </div>
-                    <div class="col-md-2">
-                    </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-outline-danger btn-block" onclick="add_man_form()">Личность</button>
-                    </div>
-                </div>
-                <div class="d-none" id='finded_thing'>
                 </div>
                 <div class="d-none" id='document_form_div'>
                     <div class="row pt-4 justify-content-center">
@@ -95,20 +86,15 @@
                     </div>
                     
                 </div>
-                <div class="d-none" id="man_form_div">
+                <div class="" id="man_form_div">
                     <div class="row pt-4 justify-content-center">
                         <div class="col-md-8">
                             <input type="text" list="names_choices" class="form-control" id="names_input" name="names_input"
                                 placeholder="Имя человека">
                             <datalist id="names_choices">
-                                <option value="Документ номер 1" />
-                                <option value="Документ номер 2" />
-                                <option value="Документ номер 3" />
-                                <option value="Документ номер 4" />
-                                <option value="Документ номер 5" />
-                                <option value="Документ номер 6" />
-                                <option value="Документ номер 7" />
-                                <option value="Erlang" />
+                            {% for el in all_names  %}
+                            <option value="{{el}}" />
+                            {% endfor %}
                             </datalist>
                         </div>
                         <div class="col-md-2">
@@ -126,11 +112,9 @@
                                 <input type="text" list="chins_list" class="form-control" id="chin_input" name="chin_input"
                                     placeholder="Служивый чин">
                                 <datalist id="chins_list">
-                                    <option value="Боярин" />
-                                    <option value="Генерал" />
-                                    <option value="Дьяк" />
-                                    <option value="Дворянин в начальных людях" />
-                                    <option value="Дворянин московский" />
+                            {% for el in all_chins  %}
+                            <option value="{{el}}" />
+                            {% endfor %}
                                 </datalist>
                             </div>
                         </div>
@@ -139,15 +123,15 @@
                                 <input type="text" list="rubric_list" class="form-control" id="rubric_input" name="rubric_input"
                                     placeholder="Рубрика боярского списка">
                                 <datalist id="rubric_list">
-                                    <option value="Дворяне в начальных людях" />
-                                    <option value="Дворяне отставные" />
-                                    <option value="Дворяне отставные из начальных людей" />
-                                    <option value="Дворяне полковой службы" />
-                                    <option value="Дворяне, служащие в полках" />
+                            {% for el in all_rubrics  %}
+                            <option value="{{el}}" />
+                            {% endfor %}
                                 </datalist>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="d-none" id='finded_thing'>
                 </div>
 			</div>
 			<!-- блок контент -->

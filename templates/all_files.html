@@ -47,8 +47,12 @@
     <div class="container">
         <div class="row pt-4">
             <div class="col-sm-6 col-md-8 col-xl" style="padding-bottom:5em;">
-                {% block content %}
-                {% endblock content %}
+            <h3>Публикации А. В. Захарова</h3>
+            {% for el in all_files %}
+            <div class="row alert alert-dark" role="alert">
+            <a href="/files/{{el.location}}">{{el.name}}</a>
+            </div>
+            {% endfor %}
             </div>
             <!-- блок контент -->
 
