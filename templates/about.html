@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>PythonForDumbs	</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="../static/index.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+	<!-- <link rel="stylesheet" href="{%static 'css/bootstrap.css' %}"> -->
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark tab">
+		<a class="navbar-brand" href="">Боярские списки XVIII века</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Новости <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Курс <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#">О нас<span class="sr-only">(current)</span></a>
+				</li>
+			</ul>
+			<p class="my-2 my-lg-0"><a role="button" class="btn btn-outline-primary">Войти</a> <span class="text-muted">или</span> <a role="button" class="btn btn-outline-primary">Зарегистрироваться</a></p>
+			<!-- <p class="my-2 my-lg-0 text">Привет, Алишер</p> -->
+		</div>
+	</nav>
+	<!-- ТУТ НАЧИНАЕТСЯ САЙТ -->
+	<div class = "container">
+		<div class="row">
+			<div class="col-sm-6 col-md-8 col-xl" style="padding-bottom:5em;">
+				<!-- блок контент -->
+				<div class="row justify-content-center pt-4">
+					<h1 class="text">Учите Питон здесь и сейчас</h1>
+					<h4 class="text-small">PythonForDumbs - это бесплатный онлайн курс обучения программированию на Python</h4>
+					<img src="images/hello_world.png" alt="" class="img-fluid">
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<h4 class="text-strong">Не нужно ничего скачивать</h4>
+						<p class="text">С PythonForDumbs можно работать прямо из браузера, не парясь об установке всего софта на компьютер</p>
+					</div>
+					<div class="col-md-4">
+						<h4 class="text-strong">Много практики</h4>
+						<p class="text">После прохождения урока можно закрепить знания пройдя тест или решив задачу. Когда вы решите её, мы покажем вам решения других людей и решение создателей</p>
+					</div>
+					<div class="col-md-3">
+						<h4 class="text-strong">Контроль учителя</h4>
+						<p class="text">Ваш учитель может сам составлять для вас тесты и проверять задачи.</p>
+					</div>
+				</div>
+			</div>
+			<!-- блок контент -->
+            {% block content %}
+            {% endblock content %}
+    </div>
+</div>
+    <footer class="footer-bs">
+        <div class="row">
+        	<div class="col-md-3 footer-brand animated fadeInLeft">
+            	<h2>PythonForDumbs</h2>
+                <p>PythonForDumbs(Англ)→Пайтон (в объяснении) для дебилов.</p>
+                <p>©2020 YzbekIndustries</p>
+            </div>
+
+        	<div class="col-md-2 footer-social animated fadeInDown">
+            	<h4>Мы в соцсетях</h4>
+            	<ul>
+                	<li><a href="https://vk.com/yzbekindustries" target="_blank">ВКонтакте</a></li>
+                	<li><a href="#">Telegram</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, send_file
 from flask_sqlalchemy import SQLAlchemy
 import json
 app = Flask(__name__)
@@ -87,6 +87,15 @@ def man_detail(id):
     man = ManModel.query.get_or_404(id) # Получение модели человека
     tables = RelatedInfo.query.filter_by(person_id=id).all() # Получение связанных с ним записей в таблицах(архивах)
     return render_template('man_detail.html', man=man, tables=tables)
+
+
+@app.route('/files/<file_name>')
+def get_file(file_name):
+    try:
+        return send_file(f'files/{file_name}', as_attachment=True)
+    except Exception as e:
+        print(e)
+        return 404
 
 
 @app.route('/')
