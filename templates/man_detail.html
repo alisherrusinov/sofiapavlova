@@ -1,14 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Архив Бояр</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PythonForDumbs </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+        <script type="text/javascript">
+        SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+        </script>
+    <script src="../static/index.js"></script>
+
 </head>
+
 <body>
-    {{man.name}}
-    {% for row in tables %}
-    {{row.note}}
-    {% endfor %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark tab">
+        <a class="navbar-brand" href="">Боярские списки XVIII века</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Главная <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">О сайте <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">FAQ <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <!-- <p class="my-2 my-lg-0 text">Привет, Алишер</p> -->
+        </div>
+    </nav>
+    <!-- ТУТ НАЧИНАЕТСЯ САЙТ -->
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-sm-6 col-md-8 col-xl" style="padding-bottom:5em;">
+                <div class="row">
+                    <p><h5>Именная формула(современная)</h5>: {{man.name}}</p>
+                </div>
+                <div class="row">
+                    <p><h5>Именная формула(аутентичная)</h5>: {{man.old_name}}</p>
+                </div>
+                <div class="row">
+                    <p><h5>Чин или специальная рубрика боярских списков</h5>: {{man.chin}}</p>
+                </div>
+                <div class="row">
+                    <p><h5>Рубрика боярского списка:</h5> {{man.rubric}}</p>
+                </div>
+                <div class="row pt-3">
+                    <h4>ПОЛНОТЕКСТОВЫЕ СВЕДЕНИЯ О ПЕРСОНАЛИИ</h4>
+                </div>
+                <div>
+                    <table class="table table-bordered" style="color: white;">
+                        <thead>
+                          <tr>
+                            <th>Год боярского списка</th>
+                            <th>Текст пометы</th>
+                            <th>Количество дворов</th>
+                            <th>Номер листа</th>
+                            <th>Археографическое примечание</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for el in tables %}
+                          <tr>
+                            <th scope="row">{{el.year}}</th>
+                            {% if el.note == None %}<td></td> {% else %}<td>{{el.note}}</td> {% endif %}
+                            {% if el.count == None %}<td></td> {% else %}<td>{{el.count}}</td> {% endif %}
+                            <td>{{el.list_number}}</td>
+                            {% if el.arch_note == None %}<td></td> {% else %}<td>{{el.arch_note}}</td> {% endif %}
+                          </tr>
+                        {% endfor %}
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+            <!-- блок контент -->
+
+        </div>
+    </div>
+    <footer id="footer" class="footer-bs footer navbar-fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 footer-brand animated fadeInLeft">
+                    <h2>Боярские списки XVIII века</h2>
+                </div>
+
+                <div class="col-md-2 footer-social animated fadeInDown">
+                    <h4>Мы в соцсетях</h4>
+                    <ul>
+                        <li><a href="" target="_blank">ВКонтакте</a></li>
+                        <li><a href="#">Telegram</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </footer>
+
 </body>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+</script>
+
 </html>

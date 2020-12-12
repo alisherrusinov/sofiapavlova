@@ -47,10 +47,10 @@ function send_request_man(){
                     document.getElementById('finded_thing').className = ""
                 }
                 else{
-                    document.getElementById('finded_thing').className = ""
+                    document.getElementById('finded_thing').className = "pt-4"
                     document.getElementById('finded_thing').innerHTML = ""
                     response[0].forEach(function(item, i, arr) {
-                        document.getElementById('finded_thing').innerHTML += `<a href='${SCRIPT_ROOT}/people_info/${item[0]}'>${item[1]}</a>`   
+                        document.getElementById('finded_thing').innerHTML += `<div class="row alert alert-dark" role="alert"><a href='${SCRIPT_ROOT}/people_info/${item[0]}'>${item[1]}</a></div>`   
                     });
                 }
 
