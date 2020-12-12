@@ -71,7 +71,14 @@ def get_people():
                 query = f'{query} and rubric="{parameter}" '
     man = db.engine.execute(query) # Обращение к базе данных
     man = [x for x in man] # Преобразование объекта запроса к базе данных в привычный список
-    return json.dumps(list(man[0]), ensure_ascii=False,)# Отправка ответа в формате JSON. Параметр ensure_ascii нужен для того чтобы не было путаницы с кодировкой
+    print(man)
+    if(len(man) == 0):
+        return jsonify(404)
+    response = []
+    for i in man:
+        response.append(list(i))
+    print(json.dumps(response, ensure_ascii=False))
+    return json.dumps(response, ensure_ascii=False,)# Отправка ответа в формате JSON. Параметр ensure_ascii нужен для того чтобы не было путаницы с кодировкой
 
 
 @app.route('/people_info/<id>')

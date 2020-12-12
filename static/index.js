@@ -42,8 +42,18 @@ function send_request_man(){
             success: function(response){
                 response = JSON.parse("[" + response + "]");
                 console.log(response)
-                document.getElementById('finded_thing').innerHTML = `<a href='${SCRIPT_ROOT}/people_info/${response[0][0]}'>${response[0][1]}</a>`
-                document.getElementById('finded_thing').className = ""
+                if(response == 404){
+                    document.getElementById('finded_thing').innerHTML = 'Не найдено'
+                    document.getElementById('finded_thing').className = ""
+                }
+                else{
+                    document.getElementById('finded_thing').className = ""
+                    document.getElementById('finded_thing').innerHTML = ""
+                    response[0].forEach(function(item, i, arr) {
+                        document.getElementById('finded_thing').innerHTML += `<a href='${SCRIPT_ROOT}/people_info/${item[0]}'>${item[1]}</a>`   
+                    });
+                }
+
             },
             error: function(error){
                 console.log(error)
