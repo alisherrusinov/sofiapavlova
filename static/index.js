@@ -63,8 +63,9 @@ function send_request_man(){
 }
 
 function send_request_document(){
-    value = document.getElementById('document_name').value
-    data = {name:value}
+    values = document.getElementById('document_name').value
+    data = {}
+    data.value = values
     $.ajax(
         {
             url:  SCRIPT_ROOT+'/get_document',
@@ -72,6 +73,17 @@ function send_request_document(){
             method: 'post',
             success: function(response){
                 console.log(response)
+                if(response == 404){
+                    document.getElementById('finded_thing').innerHTML = 'Не найдено'
+                    document.getElementById('finded_thing').className = ""
+                }
+                else{
+                    document.getElementById('finded_thing').className = "pt-4"
+                    document.getElementById('finded_thing').innerHTML = ""
+                    document.getElementById('finded_thing').innerHTML += `<div class="row alert alert-dark" role="alert"><a href='${SCRIPT_ROOT}/files/${response[1]}'>${response[0]}</a></div>`   
+
+                }
+
             },
             error: function(error){
                 console.log(error)
