@@ -14,8 +14,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' # Имя баз�
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com' # Адрес почтогого сервера google
 app.config['MAIL_PORT'] = 587 # Порт сервера
 app.config['MAIL_USE_TLS'] = True # Настройка безопасности для отправки почты
-app.config['MAIL_USERNAME'] = 'mail@gmail.com'  # введите свой адрес электронной почты здесь
-app.config['MAIL_DEFAULT_SENDER'] = 'mail@gmail.com'  # и здесь
+app.config['MAIL_USERNAME'] = 'your@gmail.com'  # введите свой адрес электронной почты здесь
+app.config['MAIL_DEFAULT_SENDER'] = 'your@gmail.com'  # и здесь
 app.config['MAIL_PASSWORD'] = 'password'  # введите пароль
 db = SQLAlchemy(app) # Объект менеджера базы данных
 mail = Mail(app) # Объект менеджера почты
@@ -84,8 +84,10 @@ class MailModel(db.Model): # Модель email для рассылки
 def check_new_files():
     file = open('last.txt') # Получение последнего ->
     last = int(file.read()) # Айди
+    file.close()
     current = FileModel.query.all()[-1].id # Получение последнего айди в базе данных
     if(current>last): # Если новая публикация
+        file = open('last.txt','w')
         mailing() # Запустить процесс рассылки
         file.write(str(current)) # Обновить данные
         file.close()
