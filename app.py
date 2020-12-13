@@ -86,7 +86,7 @@ def check_new_files():
     current = FileModel.query.all()[-1].id # Получение последнего айди в базе данных
     if(current>last): # Если новая публикация
         mailing() # Запустить процесс рассылки
-        file.write(current) # Обновить данные
+        file.write(str(current)) # Обновить данные
         file.close()
 
 
