@@ -4,6 +4,7 @@ import sqlalchemy
 from flask_mail import Mail, Message
 from celery import Celery
 from celery.schedules import crontab
+from itertools import groupby
 import json
 
 HOST = 'http://127.0.0.1:5000' # Адрес хостинга (нужно для рассылки)
@@ -177,6 +178,8 @@ def index():
         all_chins.append(i.chin) # Добавление чина в список
         all_rubrics.append(i.rubric) # Добавление рубрики в список
         all_names.append(i.name) # Добавление имени в список
+    all_chins = [el for el, _ in groupby(all_chins)] # Удалить одинаковые чины(чтобы не было несколько одинаковых подсказок)
+    all_rubrics  = [el for el, _ in groupby(all_rubrics)] # Удалить одинаковые рубрики (чтобы не было несколько одинаковых подсказок)
     return render_template('index.html', all_names=all_names, all_chins=all_chins, all_rubrics=all_rubrics)
 
 
