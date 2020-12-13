@@ -91,3 +91,30 @@ function send_request_document(){
         }
     )
 }
+
+
+function send_mail_follow(){
+    values = document.getElementById('email_follow').value
+    data = {}
+    data.mail = values
+    $.ajax(
+        {
+            url:  SCRIPT_ROOT+'/email_follow',
+            data: data,
+            method: 'post',
+            success: function(response){
+                console.log(response)
+                if(response == 'error'){
+                    alert('Данный email уже подписан на рассылку')
+                }
+                else{
+                    alert('Успешно!')
+                }
+
+            },
+            error: function(error){
+                console.log(error)
+            }
+        }
+    )
+}
