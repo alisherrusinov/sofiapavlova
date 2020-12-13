@@ -6,7 +6,7 @@ from celery import Celery
 from celery.schedules import crontab
 import json
 
-HOST='http://127.0.0.1:5000' # Адрес хостинга (нужно для рассылки)
+HOST = 'http://127.0.0.1:5000' # Адрес хостинга (нужно для рассылки)
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' # Имя базы данных
