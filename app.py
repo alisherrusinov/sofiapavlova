@@ -13,9 +13,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db' # Имя баз�
 app.config['MAIL_SERVER'] = 'smtp.googlemail.com' # Адрес почтогого сервера google
 app.config['MAIL_PORT'] = 587 # Порт сервера
 app.config['MAIL_USE_TLS'] = True # Настройка безопасности для отправки почты
-app.config['MAIL_USERNAME'] = 'alisher.nugmanoff@gmail.com'  # введите свой адрес электронной почты здесь
-app.config['MAIL_DEFAULT_SENDER'] = 'alisher.nugmanoff@gmail.com'  # и здесь
-app.config['MAIL_PASSWORD'] = 'Online_gamer200319'  # введите пароль
+app.config['MAIL_USERNAME'] = 'mail@gmail.com'  # введите свой адрес электронной почты здесь
+app.config['MAIL_DEFAULT_SENDER'] = 'mail@gmail.com'  # и здесь
+app.config['MAIL_PASSWORD'] = 'password'  # введите пароль
 db = SQLAlchemy(app) # Объект менеджера базы данных
 mail = Mail(app) # Объект менеджера почты
 
